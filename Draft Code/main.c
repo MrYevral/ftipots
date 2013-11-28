@@ -1,26 +1,26 @@
-struct rescue_assestes{
-    /*callsign = alphanumeric no gaps
-     * assest type = single letter L = life boat H = helecopter
-     * placemnt name, in alphanumeric string
-     * longitude latitude in degress
-     * max speed knots
-     * max deploy time mins
-     * restock time mins
-     */
-    
-    
-};
+#include<stdio.h>
+#include<stdlib.h>
+
+struct Rescue_assest {
+	char callsign[56];
+	char asset_type;
+	float longitude;
+	float latitude;
+	int max_speed;
+    	int restock_time;
+	struct Rescue_asset *next;
+} ;
 
 
 
 
 int main(int argc, char** argv) {
-	printf("Hello, World!");
+	printf("Hello, World!\n");
         
         
         
         
-    return (EXIT_SUCCESS);
+	return (EXIT_SUCCESS);
 }
 
 

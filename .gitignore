@@ -1,2 +1,5 @@
 /SRC/DRAFT/ftipots/dist/
 /SRC/DRAFT/ftipots/build/
+*.out
+/NetBeans/Peril/dist/
+/NetBeans/Peril/build/
