@@ -1,7 +1,7 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-#include"rescue_asset.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "rescue_asset.h"
 
 rescue_asset *temp;
 char b_callsign[30];

@@ -1,13 +1,17 @@
-typedef struct {
+struct md{
 	short day;
 	short month;
 	int year;
 	short hour;
 	short min;
 	short sec;
-	char ais[10];
+	char ais[5];
 	int lifeboat_help;
 	int helecopter_help;
-} mayday;
+	struct md *next;
+}; 
 
-mayday *fget_mayday(FILE *file);
+typedef struct md mayday;
+
+mayday *get_maydays(char *fn);
+mayday *get_mayday(FILE *fp);
