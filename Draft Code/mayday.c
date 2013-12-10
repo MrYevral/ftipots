@@ -23,7 +23,6 @@ mayday *get_maydays(char *fn){
 	root = current;
 	last = current;
 	while((current = get_mayday(fp)) != NULL){
-	//	printf("bang");
 		last->next = current;
 		last = current;
 	}
@@ -33,15 +32,14 @@ mayday *get_maydays(char *fn){
 mayday *get_mayday(FILE *fp_maydays){
 	check = fscanf(fp_maydays,"%hd %hd %d %hd %hd %hd %s %d %d",&b_day,
 		&b_month, &b_year, &b_hour, &b_min, &b_sec, b_ais,&b_lifeboat_help, &b_helecopter_help);
-		printf("%d  ",check);
 	if(check == EOF)
 		return NULL;
 	temp = malloc(sizeof(mayday));
-	temp->day = b_day;
-	temp->month = b_month;
-	temp->year = b_year;
-	temp->min = b_min;
-	temp->hour = b_hour;
+	temp->time_of_incident.day = b_day;
+	temp->time_of_incident.month = b_month;
+	temp->time_of_incident.year = b_year;
+	temp->time_of_incident.min = b_min;
+	temp->time_of_incident.hour = b_hour;
 	strcpy(temp->ais,b_ais);
 	temp->lifeboat_help = b_lifeboat_help;
 	temp->helecopter_help = b_lifeboat_help;

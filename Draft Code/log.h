@@ -1,7 +1,6 @@
-typedef struct{
-	short secs;
-	short mins;
-	short hours;
+struct e{
+	time time_of_event;
 	char assets_used[];
-	event *next;
+	struct e *next;
 } event;
+typedef struct e event;

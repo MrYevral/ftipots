@@ -1,10 +1,6 @@
+#include "time.h"
 struct md{
-	short day;
-	short month;
-	int year;
-	short hour;
-	short min;
-	short sec;
+	time time_of_incident;
 	char ais[6];
 	int lifeboat_help;
 	int helecopter_help;
