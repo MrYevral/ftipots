@@ -5,7 +5,7 @@ struct md{
 	short hour;
 	short min;
 	short sec;
-	char ais[5];
+	char ais[6];
 	int lifeboat_help;
 	int helecopter_help;
 	struct md *next;
