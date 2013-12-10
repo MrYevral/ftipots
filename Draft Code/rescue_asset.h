@@ -4,17 +4,19 @@
  * Created on: 2/12/2013
  */
 #include"navigation.h"
-typedef struct {
+struct r_a{
 	char callsign[30];
 	char asset_type;
-	char base[30];
-	location base;
+	char base_name[30];
+	location base_location;
 	double speed;
-	int max_deploy;
+	int max_deploy_time;
 	int turn_around_time;
-	rescue_asset *next;
-} rescue_asset;
+	struct r_a *next;
+};
 
-//rescue_asset *fget_assets(FILE *file);
+typedef struct r_a rescue_asset;
 
-void print(resuce_asset asset);
+rescue_asset *get_assets(char *fn);
+rescue_asset *get_asset(FILE *fp);
+void print_assets(rescue_asset *root);
