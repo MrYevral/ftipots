@@ -84,20 +84,17 @@ rescue_asset *responding(char type,location *destination,int time_needed,rescue_
 	}
 	else{
 		while(current !=NULL){
-			if(current->asset_type == "l"||current->asset_type == "L"){
-				temp = great_circle(current->base_location,destination);
-				asset_max=(current->max_deploy_time/2/current->speed;
-				if( asset_max>temp && asset_max<distance ) {
+			if(current->asset_type =="l"||current->asset_type =="L"){
+				temp = great_circle(current->base_location,*destination);
+				min_deploy = (temp/current->speed)*2;
+				if(min_deploy<current->max_deploy && min_deploy<asset_deploy ){
 					out = current;
-					distance = asset_max;
+					asset_deploy = min_deploy;
 				}
 			}
 			current = current->next;
-
-
-	}
-
-	return current;
+		}
+		return current;
 
 
 }
