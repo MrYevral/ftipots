@@ -8,9 +8,12 @@ int main(int argc, char** argv) {
 //	rescue_asset *root;
 //	root = get_assets(fn);
 //	print_assets(root);
-	char *fn = "mayday_1.txt";
+/*	char *fn = "mayday_1.txt";
 	mayday *root;
-	root = get_maydays(fn);
+	root = get_maydays(fn);*/
+	char *fn = "ships_1.txt";
+	ship *root;
+	root = get_ships(fn);
 	printf("success");
 	return (EXIT_SUCCESS);
 }
