@@ -5,17 +5,23 @@
 
 
 ship *temp;
-date_time *last_known_time;
+
+time *last_known_time;
 char* b_ais;
 location b_last_known_location;
 
 date_time *get_dt(FILE *fp){
-
-//TODO get date stuff sorted
-
+	check=(fscamf(fp,"",);
+	last_known_time = malloc(sizeof(last_known_time));
+	last_known_time->day = b_day;
+	last_known_time->month= b_month;
+ 	last_known_time->year = b_year;
+	last_known_time->hour = b_hour;
+	last_known_time->min = b_min;
+	last_known_time->sec = b_sec;
 }
 ship *get_ship(FILE *fp){
-	check = fscanf(fp,"",)
+	check = fscanf(fp,"",);
 	if(check == EOF)
 		return NULL;
 	//allocate details
@@ -26,7 +32,7 @@ ship *get_ships(char *fn){
 	ship *root;
 	ship *current;
 	ship *last;
-	date_time
+	time = get_dt(fp);
 	current = get_ship(fp);
 	root = current;
 	last = current;
