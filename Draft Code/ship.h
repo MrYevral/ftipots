@@ -9,6 +9,6 @@ struct s{
 	struct s *next;
 };
 typedef struct s ship;
-ship *get_ship(FILE *fp);
+ship *get_ship(FILE *fp,time *t);
 ship *get_ships(char *fn);
 

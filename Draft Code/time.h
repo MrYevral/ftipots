@@ -1,3 +1,6 @@
+#ifndef TIMESTRUCT
+#define TIMESTRUCT
+
 struct t{
 	short day;
 	short month;
@@ -7,3 +10,4 @@ struct t{
 	short sec;
 };
 typedef struct t time;
+#endif

@@ -17,10 +17,11 @@ double b_lat;
 double b_lng;
 double b_direction;
 double b_speed;
+int check;
 
 time *get_dt(FILE *fp){
-	fscamf(fp,"%hd %hd %d %hd %hd %hd",&b_day, &b_month,
-		&b_year, &b_hour, &b_min, &b_sec;
+	fscanf(fp,"%hd %hd %d %hd %hd %hd",&b_day, &b_month,
+		&b_year, &b_hour, &b_min, &b_sec);
 	last_known_time = malloc(sizeof(last_known_time));
 	last_known_time->day = b_day;
 	last_known_time->month= b_month;
@@ -30,13 +31,13 @@ time *get_dt(FILE *fp){
 	last_known_time->sec = b_sec;
 	return last_known_time;
 }
-ship *get_ship(FILE *fp, time t){
+ship *get_ship(FILE *fp, time *t){
 	check = fscanf(fp,"%s %lf %lf %lf %lf",b_ais , &b_lat, &b_lng,
 		b_direction, b_speed);
 	if(check == EOF)
 		return NULL;
 	temp = malloc(sizeof(ship));
-	temp->time = t;
+	temp->time_last_seen = *t;
 	strcpy(temp->ais,b_ais);
 	temp->last_known_location.lat = b_lat;
 	temp->last_known_location.lng = b_lng;
@@ -51,14 +52,14 @@ ship *get_ships(char *fn){
 	ship *root;
 	ship *current;
 	ship *last;
-	time = get_dt(fp);
-	current = get_ship(fp,time);
+	last_known_time = get_dt(fp);
+	current = get_ship(fp,last_known_time);
 	root = current;
 	last = current;
-	while((current = get_ship(fp))!=NULL){
+	while((current = get_ship(fp,last_known_time))!=NULL){
 		last->next=current;
 		last = current;
 	}
-	fclose(fp)
+	fclose(fp);
 	return root;
 }
