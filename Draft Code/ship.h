@@ -1,4 +1,4 @@
-#include "naviagion.h"
+#include "navigation.h"
 #include "time.h"
 struct s{
 	time time_last_seen;

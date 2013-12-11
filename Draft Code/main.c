@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "rescue_asset.h"
 #include "mayday.h"
-
+#include "ship.h"
 int main(int argc, char** argv) {
 //	char *fn = "rescue_assets.txt";
 //	rescue_asset *root;
