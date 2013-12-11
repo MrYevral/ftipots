@@ -45,8 +45,4 @@ mayday *get_mayday(FILE *fp_maydays){
 	temp->helecopter_help = b_lifeboat_help;
 	temp->next = NULL;
 	return temp;
-
-
-
-
 }

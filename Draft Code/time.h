@@ -2,12 +2,12 @@
 #define TIMESTRUCT
 
 struct t{
-	short day;
-	short month;
+	int day;
+	int month;
 	int year;
-	short hour;
-	short min;
-	short sec;
+	int hour;
+	int min;
+	int sec;
 };
 typedef struct t time;
 #endif

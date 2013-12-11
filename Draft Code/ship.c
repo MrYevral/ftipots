@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
+#include <math.h>
 #include "ship.h"
 
 
@@ -12,7 +14,7 @@ int b_year;
 short b_hour;
 short b_min;
 short b_sec;
-char* b_ais;
+char b_ais[6];
 double b_lat;
 double b_lng;
 double b_direction;
@@ -22,7 +24,7 @@ int check;
 time *get_dt(FILE *fp){
 	fscanf(fp,"%hd %hd %d %hd %hd %hd",&b_day, &b_month,
 		&b_year, &b_hour, &b_min, &b_sec);
-	last_known_time = malloc(sizeof(last_known_time));
+	last_known_time = malloc(sizeof(time));
 	last_known_time->day = b_day;
 	last_known_time->month= b_month;
  	last_known_time->year = b_year;
@@ -33,7 +35,7 @@ time *get_dt(FILE *fp){
 }
 ship *get_ship(FILE *fp, time *t){
 	check = fscanf(fp,"%s %lf %lf %lf %lf",b_ais , &b_lat, &b_lng,
-		b_direction, b_speed);
+		&b_direction, &b_speed);
 	if(check == EOF)
 		return NULL;
 	temp = malloc(sizeof(ship));
@@ -63,3 +65,43 @@ ship *get_ships(char *fn){
 	fclose(fp);
 	return root;
 }
+
+ship *find(char ais_to_find[10],ship *root){
+	bool found = false;
+	ship *current;
+	current = root;
+
+	while(!found){
+	if(current->ais!= ais_to_find){
+		if(current->next == NULL){
+			return NULL;
+		}
+		current = current->next;
+	}
+	else{
+		found = true;
+	}
+
+	}
+return current;
+
+
+
+
+
+}
+location *get_current_location(ship *in_peril,time *current_time){
+	int tp = time_past(in_peril->time_last_seen,current_time);
+	/* latt end = lat(deg) +(speed(knotts) *cos(distance from true north(radians))*mins)/3600.0
+	 * long end = long(deg) +(speed(knotts) *sin(distance from true north(radians))*mins/cos(latt start(radians)))/3600.0
+	 */
+	location *out;
+	out = malloc(sizeof(location));
+	out->lat = in_peril->last_known_location.lat + (in_peril->speed * cos((in_peril->direction * M_PI / 180)) * tp)/3600.0;
+	out->lng = in_peril->last_known_location.lng + (in_peril->speed * sin((in_peril->direction * M_PI / 180)) * tp/cos((in_peril->last_known_location.lat*M_PI/180)))/3600.0;
+
+
+
+}
+
+

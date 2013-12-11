@@ -58,8 +58,13 @@ void print_assets(rescue_asset *root){
 
 		print_asset(current);
 		current = current->next;
+	}
+}
+rescue_asset *responding(char type,location *destination,int time_needed){
+	if(type == "l"){
 
 	}
+
 
 
 
