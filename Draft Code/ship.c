@@ -6,6 +6,7 @@
 #include "ship.h"
 
 
+
 ship *temp;
 time *last_known_time;
 short b_day;
@@ -90,17 +91,14 @@ return current;
 
 
 }
-location *get_current_location(ship *in_peril,time *current_time){
+location *get_current_location(ship *in_peril,time current_time){
 	int tp = time_past(in_peril->time_last_seen,current_time);
-	/* latt end = lat(deg) +(speed(knotts) *cos(distance from true north(radians))*mins)/3600.0
-	 * long end = long(deg) +(speed(knotts) *sin(distance from true north(radians))*mins/cos(latt start(radians)))/3600.0
-	 */
 	location *out;
-	out = malloc(sizeof(location));
+	out =malloc(sizeof(location));
 	out->lat = in_peril->last_known_location.lat + (in_peril->speed * cos((in_peril->direction * M_PI / 180)) * tp)/3600.0;
 	out->lng = in_peril->last_known_location.lng + (in_peril->speed * sin((in_peril->direction * M_PI / 180)) * tp/cos((in_peril->last_known_location.lat*M_PI/180)))/3600.0;
 
-
+	return out;
 
 }
 

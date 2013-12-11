@@ -52,7 +52,6 @@ while(mayday_current!= NULL){
 		if(mayday_current->ais == ship_current->ais){
 			
 			location *current_location;
-			current_location = malloc(sizeof(location));
 			current_location = get_current_location(ship_current,mayday_current->time_of_incident);
 			if(current_location->lat>51.667&&current_location->lng<52.833&&current_location->lng>-6.67&&current_location->lng<-3.883){
 				rescue_asset *hele_responding;

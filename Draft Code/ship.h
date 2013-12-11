@@ -11,4 +11,4 @@ struct s{
 typedef struct s ship;
 ship *get_ship(FILE *fp,time *t);
 ship *get_ships(char *fn);
-
+location *gut_current_location(ship *s,time t);
