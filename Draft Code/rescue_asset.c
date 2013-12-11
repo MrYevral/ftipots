@@ -73,7 +73,7 @@ rescue_asset *responding(char type,location *destination,int time_needed,rescue_
 			if(current->asset_type =="h"||current->asset_type =="H"){
 				temp = great_circle(current->base_location,*destination);
 				min_deploy = (temp/current->speed)*2+time_needed;
-				if(min_deploy<current->max_deploy && min_deploy<asset_deploy ){
+				if(min_deploy<current->max_deploy_time && min_deploy<asset_deploy ){
 					out = current;
 					asset_deploy = min_deploy;
 				}
@@ -87,14 +87,16 @@ rescue_asset *responding(char type,location *destination,int time_needed,rescue_
 			if(current->asset_type =="l"||current->asset_type =="L"){
 				temp = great_circle(current->base_location,*destination);
 				min_deploy = (temp/current->speed)*2;
-				if(min_deploy<current->max_deploy && min_deploy<asset_deploy ){
+				if(min_deploy<current->max_deploy_time && min_deploy<asset_deploy ){
 					out = current;
 					asset_deploy = min_deploy;
 				}
 			}
 			current = current->next;
 		}
+		printf("haha");
 		return current;
 
 
+}
 }
