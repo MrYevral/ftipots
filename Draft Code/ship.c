@@ -15,7 +15,7 @@ int b_year;
 short b_hour;
 short b_min;
 short b_sec;
-char b_ais[6];
+char b_ais[AIS_LENGTH];
 double b_lat;
 double b_lng;
 double b_direction;

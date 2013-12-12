@@ -11,7 +11,7 @@ int b_year;
 short b_min;
 short b_sec;
 short b_hour;
-char b_ais[5];
+char b_ais[AIS_LENGTH];
 int b_lifeboat_help;
 int b_helecopter_help;
 

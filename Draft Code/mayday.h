@@ -1,7 +1,8 @@
 #include "time.h"
+#include "definition.h"
 struct md{
 	time time_of_incident;
-	char ais[6];
+	char ais[AIS_LENGTH];
 	int lifeboat_help;
 	int helecopter_help;
 	struct md *next;

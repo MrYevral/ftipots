@@ -4,10 +4,11 @@
  * Created on: 2/12/2013
  */
 #include"navigation.h"
+#include "definitions.h"
 struct r_a{
-	char callsign[30];
+	char callsign[STR_LENGTH];
 	char asset_type;
-	char base_name[30];
+	char base_name[STR_LENGTH];
 	location base_location;
 	double speed;
 	int max_deploy_time;

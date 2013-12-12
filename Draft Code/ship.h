@@ -1,9 +1,10 @@
 #include "navigation.h"
 #include "time.h"
+#include "definition.h"
 
 struct s{
 	time time_last_seen;
-	char ais[6];
+	char ais[AIS_LENGTH];
 	location last_known_location;
 	double direction;
 	double speed;

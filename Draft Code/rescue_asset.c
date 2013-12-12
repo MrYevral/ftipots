@@ -2,11 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include "rescue_asset.h"
-#include "definitions.h"
 rescue_asset *temp;
-char b_callsign[30];
+char b_callsign[STR_LENGTH];
 char b_asset_type;
-char b_base_name[30];
+char b_base_name[STR_LENGTH];
 double b_latt;
 double b_long;
 double b_speed;
