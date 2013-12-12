@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "rescue_asset.h"
-
+#include "definitions.h"
 rescue_asset *temp;
 char b_callsign[30];
 char b_asset_type;
@@ -104,5 +104,8 @@ rescue_asset *responding(char type, location destination, int time_needed, rescu
 
 	}
 	printf("      asset sent = %s\n",out->callsign);
+	FILE *log_fp = fopen(FILE_LOG);
+	fprintf(log_fp,"      asset sent = %s\n",out->callsign);
+	fclose(log_fp);
 	return out;
 }
