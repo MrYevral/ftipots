@@ -32,6 +32,7 @@ rescue_asset *get_asset(FILE *fp_assets){
 	return temp;
 	
 }
+
 rescue_asset *get_assets(char *fn){
 	FILE *fp = fopen(fn,"r");
 	rescue_asset *root;
@@ -40,13 +41,16 @@ rescue_asset *get_assets(char *fn){
 	current = get_asset(fp);
 	root = current;
 	last = current;
+	printf("starting assets\n");
 	while((current = get_asset(fp)) != NULL){
 		last->next = current;
 		last = current;
 	}
 	fclose(fp);
+	printf("finishing assets\n");
 	return root;
 }
+
 void print_asset(rescue_asset *ra){
 	printf("%s\n",ra->callsign);
 }
@@ -60,19 +64,27 @@ void print_assets(rescue_asset *root){
 		current = current->next;
 	}
 }
-rescue_asset *responding(char type,location *destination,int time_needed,rescue_asset *root){
+
+rescue_asset *responding(char type, location destination, int time_needed, rescue_asset *drummond){
+	printf("YYY - :%s:\n", drummond->callsign);
+
 	rescue_asset *current;
 	rescue_asset *out;
-	current = root;
+
+	current = drummond;
 	out = NULL;
 	double min_deploy = 900000;
-	double temp;
+	double temp_dist;
 	double asset_deploy = 900000;
-	if(type == "h"){
-		while(current !=NULL){
-			if(current->asset_type =="h"||current->asset_type =="H"){
-				temp = great_circle(current->base_location,*destination);
-				min_deploy = (temp/current->speed)*2+time_needed;
+	printf("respinding...\n");
+	if(type == 'h'){
+		while(current != NULL){
+			printf(" we have %s in current->asset_type\n", current->callsign );
+			printf("x-helicopter\n");
+			if(current->asset_type =='h'||current->asset_type =='H'){
+				printf("helicopter\n");
+				temp_dist = great_circle(current->base_location, destination);
+				min_deploy = (temp_dist/current->speed)*2+time_needed;
 				if(min_deploy<current->max_deploy_time && min_deploy<asset_deploy ){
 					out = current;
 					asset_deploy = min_deploy;
@@ -80,13 +92,14 @@ rescue_asset *responding(char type,location *destination,int time_needed,rescue_
 			}
 			current = current->next;
 		}
-		return current;
 	}
 	else{
-		while(current !=NULL){
-			if(current->asset_type =="l"||current->asset_type =="L"){
-				temp = great_circle(current->base_location,*destination);
-				min_deploy = (temp/current->speed)*2;
+		while(current != NULL){
+			printf("x-lifeboat\n");
+			if(current->asset_type =='l'||current->asset_type =='L'){
+				printf("lifeboat\n");
+				temp_dist = great_circle(current->base_location, destination);
+				min_deploy = (temp_dist/current->speed)*2;
 				if(min_deploy<current->max_deploy_time && min_deploy<asset_deploy ){
 					out = current;
 					asset_deploy = min_deploy;
@@ -95,8 +108,8 @@ rescue_asset *responding(char type,location *destination,int time_needed,rescue_
 			current = current->next;
 		}
 		printf("haha");
-		return current;
 
 
-}
+	}
+	return out;
 }
