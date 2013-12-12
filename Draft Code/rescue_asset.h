@@ -4,6 +4,7 @@
  * Created on: 2/12/2013
  */
 #include"navigation.h"
+#include"time.h"
 #include "definitions.h"
 struct r_a{
 	char callsign[STR_LENGTH];
@@ -14,6 +15,7 @@ struct r_a{
 	int max_deploy_time;
 	int turn_around_time;
 	struct r_a *next;
+	time when_free;
 };
 
 typedef struct r_a rescue_asset;

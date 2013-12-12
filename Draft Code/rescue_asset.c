@@ -28,6 +28,12 @@ rescue_asset *get_asset(FILE *fp_assets){
 	temp->speed = b_speed;
 	temp->max_deploy_time = b_max_deploy;
 	temp->turn_around_time = b_turn_around_time;
+	temp->when_free.hour = 0;
+	temp->when_free.min = 0;
+	temp->when_free.sec  = 0;
+	temp->when_free.day = 0;
+	temp->when_free.month = 0;
+	temp->when_free.year  = 0;
 	temp->next = NULL;
 	return temp;
 	
@@ -81,6 +87,7 @@ rescue_asset *responding(char type, location destination, int time_needed, rescu
 				min_deploy = (temp_dist/current->speed)*2+time_needed;
 				if(min_deploy<current->max_deploy_time && min_deploy<asset_deploy ){
 					out = current;
+					out->when_free
 					asset_deploy = min_deploy;
 				}
 			}
