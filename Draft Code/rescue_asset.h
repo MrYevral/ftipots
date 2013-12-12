@@ -20,3 +20,5 @@ typedef struct r_a rescue_asset;
 rescue_asset *get_assets(char *fn);
 rescue_asset *get_asset(FILE *fp);
 void print_assets(rescue_asset *root);
+
+rescue_asset *responding( char, location, int, rescue_asset *);

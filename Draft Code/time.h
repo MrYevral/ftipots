@@ -10,4 +10,8 @@ struct t{
 	int sec;
 };
 typedef struct t time;
+
+int time_past( time a, time b );
+int to_sec( time a);
+
 #endif

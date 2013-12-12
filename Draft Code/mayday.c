@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "mayday.h"
+
 mayday *temp;
 int check;
 short b_day;
@@ -15,7 +16,7 @@ int b_lifeboat_help;
 int b_helecopter_help;
 
 mayday *get_maydays(char *fn){
-	FILE *fp = fopen(fn,"r");
+	FILE *fp = fopen(fn, "r");
 	mayday *root;
 	mayday *current;
 	mayday *last;
@@ -29,9 +30,10 @@ mayday *get_maydays(char *fn){
 	fclose(fp);
 	return root;
 }
+
 mayday *get_mayday(FILE *fp_maydays){
-	check = fscanf(fp_maydays,"%hd %hd %d %hd %hd %hd %s %d %d",&b_day,
-		&b_month, &b_year, &b_hour, &b_min, &b_sec, b_ais,&b_lifeboat_help, &b_helecopter_help);
+	check = fscanf(fp_maydays,"%hd %hd %d %hd %hd %hd %s %d %d", &b_day,
+		&b_month, &b_year, &b_hour, &b_min, &b_sec, b_ais, &b_lifeboat_help, &b_helecopter_help);
 	if(check == EOF)
 		return NULL;
 	temp = malloc(sizeof(mayday));
@@ -40,7 +42,7 @@ mayday *get_mayday(FILE *fp_maydays){
 	temp->time_of_incident.year = b_year;
 	temp->time_of_incident.min = b_min;
 	temp->time_of_incident.hour = b_hour;
-	strcpy(temp->ais,b_ais);
+	strcpy(temp->ais, b_ais);
 	temp->lifeboat_help = b_lifeboat_help;
 	temp->helecopter_help = b_lifeboat_help;
 	temp->next = NULL;
