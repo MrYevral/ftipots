@@ -1,6 +1,6 @@
 #include "navigation.h"
 #include "time.h"
-#include "definition.h"
+#include "definitions.h"
 
 struct s{
 	time time_last_seen;

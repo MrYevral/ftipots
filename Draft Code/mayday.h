@@ -1,5 +1,5 @@
 #include "time.h"
-#include "definition.h"
+#include "definitions.h"
 struct md{
 	time time_of_incident;
 	char ais[AIS_LENGTH];

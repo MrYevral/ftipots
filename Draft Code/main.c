@@ -49,14 +49,14 @@ int main(int argc, char** argv) {
 
 void solve(mayday *root, rescue_asset *assets, ship *ships) {
 printf("Logging Started\n");
-log_fp = fopen("log.txt","a");
-fprintf(log_fp,"NEW_LOG\n----------");
+log_fp = fopen(FILE_LOG);
+fprintf(log_fp,"NEW_LOG\n----------\n");
 fclose(log_fp);
 mayday *mayday_current = root;
 ship *ship_current = ships;
 int found_ais = 0;
 
-while(mayday_current!= NULL) {
+//while(mayday_current!= NULL) {
 	found_ais = 0;
 	ship_current = ships;
 	printf("Mayday received!\n");
@@ -64,7 +64,7 @@ while(mayday_current!= NULL) {
 	log_fp = fopen(FILE_LOG);
 	fprintf(log_fp,"Mayday received!\n");
 	fclose(log_fp);
-	//while(ship_current!=NULL){ USED IN EXTEND MISSION
+	while(ship_current!=NULL){// USED IN EXTEND MISSION
 		if(strcmp(mayday_current->ais, ship_current->ais) == 0) {
 			printf("  Known AIS:%s\n", ship_current->ais);
 			log_fp = fopen(FILE_LOG);
