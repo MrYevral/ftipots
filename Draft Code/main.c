@@ -47,18 +47,20 @@ void solve(mayday *root, rescue_asset *assets, ship *ships){
 mayday *mayday_current = root;
 rescue_asset *asset_current = assets;
 ship *ship_current = ships;
-printf("plig\n");
+//printf("plig\n");
 while(mayday_current!= NULL){
 	/*SAVING LOGIC
 	 * search through ships till an AIS match
 	 * when ais match calc ships current position
 	 * take current location, find nearest helecopter and lifeboat capable of servicing mayday sender
 	 * AGAIN
-	 */
-	printf("glug\n");
+	*/
+	ship_current = ships;
+	asset_current = assets;
+	printf("Mayday recieved!!!\n");
 	while(ship_current!=NULL){
 		if(strcmp(mayday_current->ais, ship_current->ais) == 0){
-			printf("hello\n");
+			printf("from ship with ais :%s\n",ship_current->ais);
 			
 			location current_location;
 			current_location = get_current_location(ship_current, mayday_current->time_of_incident);
@@ -68,7 +70,7 @@ while(mayday_current!= NULL){
 				rescue_asset *life_boat_responding;
 				//hele_responding = malloc(sizeof(rescue_asset));
 				//life_boat_responding = malloc(sizeof(rescue_asset));
-				printf("XXX - :%s:\n", assets->callsign );
+			//	printf("XXX - :%s:\n", assets->callsign );
 				hele_responding = responding('h', current_location, mayday_current->helecopter_help, assets);
 				life_boat_responding = responding('l', current_location, mayday_current->lifeboat_help, assets);
 			}
@@ -83,6 +85,7 @@ while(mayday_current!= NULL){
 	
 
 	mayday_current = mayday_current->next;
+
 }
 
 

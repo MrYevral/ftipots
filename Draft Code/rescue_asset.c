@@ -79,10 +79,8 @@ rescue_asset *responding(char type, location destination, int time_needed, rescu
 	printf("respinding...\n");
 	if(type == 'h'){
 		while(current != NULL){
-			printf(" we have %s in current->asset_type\n", current->callsign );
-			printf("x-helicopter\n");
 			if(current->asset_type =='h'||current->asset_type =='H'){
-				printf("helicopter\n");
+	//			printf("checking helicopters\n");
 				temp_dist = great_circle(current->base_location, destination);
 				min_deploy = (temp_dist/current->speed)*2+time_needed;
 				if(min_deploy<current->max_deploy_time && min_deploy<asset_deploy ){
@@ -95,9 +93,9 @@ rescue_asset *responding(char type, location destination, int time_needed, rescu
 	}
 	else{
 		while(current != NULL){
-			printf("x-lifeboat\n");
+			//printf("x-lifeboat\n");
 			if(current->asset_type =='l'||current->asset_type =='L'){
-				printf("lifeboat\n");
+	//			printf("checking lifeboats\n");
 				temp_dist = great_circle(current->base_location, destination);
 				min_deploy = (temp_dist/current->speed)*2;
 				if(min_deploy<current->max_deploy_time && min_deploy<asset_deploy ){
@@ -107,9 +105,9 @@ rescue_asset *responding(char type, location destination, int time_needed, rescu
 			}
 			current = current->next;
 		}
-		printf("haha");
 
 
 	}
+	printf("asset sent = %s\n",out->callsign);
 	return out;
 }
